@@ -30,9 +30,6 @@ from reportlab.platypus import (
 )
 from flask import send_from_directory
 
-@app.route('/download-app')
-def download_app():
-    return send_from_directory('assets', 'FruitAI.apk', as_attachment=True)
 # ═══════════════════════════════════════════════
 # APP SETUP
 # ═══════════════════════════════════════════════
@@ -52,7 +49,9 @@ google = oauth.register(
     server_metadata_url = 'https://accounts.google.com/.well-known/openid-configuration',
     client_kwargs = {'scope': 'openid email profile'},
 )
-
+@app.route('/download-app')
+def download_app():
+    return send_from_directory('assets', 'FruitAI.apk', as_attachment=True)
 # ═══════════════════════════════════════════════
 # CONFIG
 # ═══════════════════════════════════════════════
