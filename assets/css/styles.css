@@ -1387,3 +1387,64 @@ img {
   }
 
 }
+/* ══════════════ BOTTOM NAV — mobile/app only ══════════════ */
+.bottom-nav {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* Top navbar simplify: sirf logo dikhe, links chhupa dein */
+    .nav-menu {
+        display: none !important;
+    }
+    .nav-toggle {
+        display: none !important;
+    }
+
+    /* Bottom nav dikhayein */
+    .bottom-nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+        padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+        z-index: 999;
+    }
+
+    .bottom-nav-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.7rem;
+        color: #636e72;
+        text-decoration: none;
+        flex: 1;
+    }
+
+    .bottom-nav-link i {
+        font-size: 1.2rem;
+    }
+
+    .bottom-nav-link.active {
+        color: #00b894;
+    }
+
+    /* Content ko bottom-nav ke neeche chhupne se bachayein */
+    body {
+        padding-bottom: 60px;
+    }
+}
+
+/* ══════════════ Jab app installed/standalone mode me chale ══════════════ */
+@media (display-mode: standalone) {
+    /* Download App button ki zaroorat nahi jab already app hi hai */
+    #downloadAppBtn {
+        display: none;
+    }
+}
