@@ -28,6 +28,11 @@ from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle,
     Image as RLImage, HRFlowable
 )
+from flask import send_from_directory
+
+@app.route('/download-app')
+def download_app():
+    return send_from_directory('assets', 'FruitAI.apk', as_attachment=True)
 # ═══════════════════════════════════════════════
 # APP SETUP
 # ═══════════════════════════════════════════════
