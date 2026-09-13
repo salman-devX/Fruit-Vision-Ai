@@ -17,7 +17,7 @@ function safeOn(id, event, handler) {
 // repeatedly call document.getElementById() throughout the file.
 const pageLoader           = document.getElementById("pageLoader");       // full-screen loader shown on first load
 const pages                = Array.from(document.querySelectorAll(".page")); // all "page" sections (home, upload, results, admin, etc.)
-const navLinks             = Array.from(document.querySelectorAll(".nav-link"));    // top navbar links
+const navLinks             = Array.from(document.querySelectorAll(".nav-link, .bottom-nav-link"));    // top navbar + bottom app nav links
 const footerLinks          = Array.from(document.querySelectorAll(".footer-link")); // footer navigation links
 const uploadArea           = document.getElementById("uploadArea");       // drag-and-drop / click-to-upload box
 const imageInput           = document.getElementById("imageInput");       // hidden <input type="file">
