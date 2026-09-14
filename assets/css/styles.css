@@ -597,7 +597,7 @@ p {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.25;
+  opacity: 0.20;
   background: url('../images/hero-fruits.jpg') center / cover no-repeat;
   filter: blur(1px) saturate(1.2);
   pointer-events: none;
