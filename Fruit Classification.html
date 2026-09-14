@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FruitAI - AI-Based Fruit Classification System</title>
-     <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
@@ -52,6 +52,15 @@
         <!-- Home Page -->
         <div id="home" class="page active">
             <section class="hero">
+                <div class="hero-bg"></div>
+                <div class="hero-fruit-orbit" aria-hidden="true">
+                    <img src="./assets/images/fruit-apple.png" alt="">
+                    <img src="./assets/images/fruit-banana.png" alt="">
+                    <img src="./assets/images/fruit-grapes.png" alt="">
+                    <img src="./assets/images/fruit-peach.png" alt="">
+                    <img src="./assets/images/fruit-watermelon.png" alt="">
+                    <img src="./assets/images/fruit-apple.png" alt="">
+                </div>
                 <div class="container">
                     <h1>AI-Powered Fruit Classification</h1>
                     <p class="hero-subtitle">Instantly identify any fruit from images using cutting-edge Deep Learning.
@@ -71,11 +80,11 @@
                                 <i class="fas fa-camera"></i> Classify Fruit Now
                             </button>
 
-                           <a href="/download-app" download id="downloadAppBtn"
-                             style="width: max-content;"
-                              class="cta-button">
-                              <i class="fas fa-download"></i> Download App
-                           </a>
+                            <a href="/download-app" download id="downloadAppBtn"
+                               style="width: max-content;"
+                               class="cta-button">
+                                <i class="fas fa-download"></i> Download App
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -313,7 +322,8 @@
         <!-- Technology Page -->
         <div id="technology" class="page">
             <section class="hero"
-                style="padding: 160px 0 100px; background: linear-gradient(135deg, #a8e6cf 0%, #ffd93d 100%);">
+                style="padding: 160px 0 100px;">
+                <div class="hero-bg"></div>
                 <div class="container">
                     <h1 style="text-align: center; color: white; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">Technology
                         Stack</h1>
@@ -564,31 +574,32 @@
         </div>
     </footer>
 
+    <!-- Bottom Nav Bar (mobile/app only) -->
+    <nav class="bottom-nav" id="bottomNav">
+        <a href="#" data-page="home" class="bottom-nav-link active">
+            <i class="fas fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="#" data-page="upload" class="bottom-nav-link">
+            <i class="fas fa-camera"></i>
+            <span>Classify</span>
+        </a>
+        <a href="#" data-page="results" class="bottom-nav-link">
+            <i class="fas fa-chart-simple"></i>
+            <span>Results</span>
+        </a>
+        <a href="#" data-page="contact" class="bottom-nav-link">
+            <i class="fas fa-envelope"></i>
+            <span>Contact</span>
+        </a>
+        <a href="#" data-page="auth" class="bottom-nav-link">
+            <i class="fas fa-user"></i>
+            <span>Account</span>
+        </a>
+    </nav>
+
     <script src="./assets/js/cursor.js"></script>
     <script type="module" src="./assets/js/app.js"></script>
-    <!-- Bottom Nav Bar (mobile/app only) -->
-<nav class="bottom-nav" id="bottomNav">
-    <a href="#" data-page="home" class="bottom-nav-link active">
-        <i class="fas fa-house"></i>
-        <span>Home</span>
-    </a>
-    <a href="#" data-page="upload" class="bottom-nav-link">
-        <i class="fas fa-camera"></i>
-        <span>Classify</span>
-    </a>
-    <a href="#" data-page="results" class="bottom-nav-link">
-        <i class="fas fa-chart-simple"></i>
-        <span>Results</span>
-    </a>
-    <a href="#" data-page="contact" class="bottom-nav-link">
-        <i class="fas fa-envelope"></i>
-        <span>Contact</span>
-    </a>
-    <a href="#" data-page="auth" class="bottom-nav-link">
-        <i class="fas fa-user"></i>
-        <span>Account</span>
-    </a>
-</nav>
 </body>
 
 </html>
