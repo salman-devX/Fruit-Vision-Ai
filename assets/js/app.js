@@ -69,6 +69,21 @@ function hideMessage(target) {
 }
 
 // ════════════════════════════════════════════════
+// requireLogin()
+// Checks if the user has a valid auth token saved in localStorage.
+// If not logged in, redirects them to the auth page and returns false
+// so the calling code can stop (won't proceed to classify/upload).
+// ════════════════════════════════════════════════
+function requireLogin() {
+  const token = localStorage.getItem("fruitai_token");
+  if (!token) {
+    window.location.href = "/auth.html";
+    return false;
+  }
+  return true;
+}
+
+// ════════════════════════════════════════════════
 // showPage()
 // This is a Single Page Application (SPA) style navigation function.
 // Instead of loading a new HTML file, it just toggles the "active"
@@ -252,6 +267,8 @@ function validateFile(file) {
 // 5. On success -> store prediction data and render the full result
 // ════════════════════════════════════════════════
 async function classifyFruit() {
+  if (!requireLogin()) return;
+
   if (!selectedFile) {
     showMessage(uploadMessage, "Please select an image first.", "error");
     return;
@@ -556,16 +573,23 @@ function wireNavigation() {
       // "Auth" is a separate standalone HTML file, not an in-app page,
       // so it gets a real navigation instead of showPage()
       if (page === "auth") { window.location.href = "/auth.html"; return; }
+      // "Classify"/"upload" page requires login — block guests
+      if (page === "upload" && !requireLogin()) return;
       showPage(page);
     });
   });
   footerLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
-      showPage(link.dataset.targetPage);
+      const target = link.dataset.targetPage;
+      if (target === "upload" && !requireLogin()) return;
+      showPage(target);
     });
   });
-  if (goToUploadBtn) goToUploadBtn.addEventListener("click", () => showPage("upload"));
+  if (goToUploadBtn) goToUploadBtn.addEventListener("click", () => {
+    if (!requireLogin()) return;
+    showPage("upload");
+  });
 }
 
 // ════════════════════════════════════════════════
