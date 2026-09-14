@@ -938,7 +938,60 @@ async function checkBackendHealth() {
     if (uploadMessage) showMessage(uploadMessage, `Backend not ready: ${error.message}`, "error");
   }
 }
+// ════════════════════════════════════════════════
+// SCROLL REVEAL
+// Adds a fade-up-on-scroll effect to cards and grid
+// items the first time they enter the viewport.
+// ════════════════════════════════════════════════
+function wireScrollReveal() {
+  const revealEls = document.querySelectorAll(
+    ".feature-card, .tech-card, .fruit-chip, .about-stat-card, .about-media-frame, .fruit-showcase-banner, .contact-form, .admin-card"
+  );
+  revealEls.forEach((el) => el.classList.add("reveal"));
 
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  revealEls.forEach((el) => observer.observe(el));
+}
+
+// ════════════════════════════════════════════════
+// HERO PARALLAX
+// Subtle background drift as the user scrolls past
+// the hero, respecting reduced-motion preference.
+// ════════════════════════════════════════════════
+function wireHeroParallax() {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) return;
+
+  let ticking = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        document.querySelectorAll(".hero-bg").forEach((bg) => {
+          const rect = bg.parentElement.getBoundingClientRect();
+          if (rect.bottom > 0 && rect.top < window.innerHeight) {
+            bg.style.transform = `translateY(${window.scrollY * 0.08}px)`;
+          }
+        });
+        ticking = false;
+      });
+    },
+    { passive: true }
+  );
+}
 // If the user is already logged in (username saved in localStorage
 // from a previous session), replace the "Auth" nav link with their
 // username so it looks like a personalized account menu.
@@ -975,3 +1028,5 @@ wireAdminAndContact(); // admin login form + contact form submissions
 wireImageFallback();   // broken image handling
 checkBackendHealth();  // verify Flask backend is reachable
 updateNavForUser();    // show logged-in username in navbar if applicable
+wireScrollReveal();    // fade-up cards on scroll
+wireHeroParallax();    // subtle hero background drift
