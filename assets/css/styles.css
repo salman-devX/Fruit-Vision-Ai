@@ -257,8 +257,7 @@ p {
 .hero-bg {
   position: absolute;
   inset: -40px -20px;
-  background: url('./assets/images/hero-fruits.jpg') center 35% / cover no-repeat;
-  filter: saturate(1.15);
+  background: url('./assets/images/hero-fruits-blue.jpg') center right / cover no-repeat;
   will-change: transform;
 }
 
@@ -266,9 +265,7 @@ p {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(30, 58, 34, 0.88) 0%, rgba(30, 58, 34, 0.93) 55%, var(--primary-dark) 100%),
-    radial-gradient(560px 360px at 85% -10%, rgba(226, 166, 58, 0.22), transparent 70%);
+  background: linear-gradient(90deg, rgba(15, 30, 32, 0.82) 0%, rgba(15, 30, 32, 0.45) 45%, rgba(15, 30, 32, 0.05) 68%);
 }
 
 .hero-fruit-orbit {
@@ -651,10 +648,25 @@ p {
   border-radius: 12px;
 }
 
-/* ── UPLOAD ─────────────────────────────────── */
+/* ── UPLOAD (fruit-frame background) ───────── */
 .upload-hero {
-  background: var(--primary-dark);
+  position: relative;
+  background: url('./assets/images/upload-frame-green.jpg') center / cover no-repeat;
   color: #fff;
+  overflow: hidden;
+}
+
+.upload-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(650px 500px at 50% 45%, rgba(15, 40, 28, 0.35), rgba(15, 40, 28, 0.55) 100%);
+  pointer-events: none;
+}
+
+.upload-hero .upload-container {
+  position: relative;
+  z-index: 1;
 }
 
 .upload-container {
@@ -666,7 +678,8 @@ p {
 .upload-area {
   border: 1.5px dashed rgba(255, 255, 255, 0.3);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
   color: #fff;
   padding: 44px 28px;
   cursor: pointer;
@@ -679,12 +692,12 @@ p {
 
 .upload-area:hover {
   border-color: var(--accent);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .upload-area.dragover {
   border-color: var(--accent);
-  background: rgba(226, 166, 58, 0.1);
+  background: rgba(226, 166, 58, 0.15);
 }
 
 .upload-area i {
@@ -692,7 +705,7 @@ p {
 }
 
 .upload-area p {
-  color: rgba(255, 255, 255, 0.65) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
 }
 
 .image-preview {
