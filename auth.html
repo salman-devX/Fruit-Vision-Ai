@@ -945,15 +945,15 @@
           body: JSON.stringify({ email, password: pass, remember_me: rem })
         });
         const data = await res.json();
-        if (data.ok) {
-          localStorage.setItem('fruitai_token', data.token);
-          localStorage.setItem('fruitai_username', data.username);
-          localStorage.setItem('fruitai_email', data.email);
-          msg(data.message, 'ok');
-          setTimeout(() => showLoggedIn(data.username, data.email), 1200);
-        } else {
-          msg(data.error || 'Login failed.', 'err');
-        }
+       if (data.ok) {
+        localStorage.setItem('fruitai_token', data.token);
+        localStorage.setItem('fruitai_username', data.username);
+        localStorage.setItem('fruitai_email', data.email);
+        msg(data.message, 'ok');
+        setTimeout(() => { window.location.href = '/'; }, 1200); // ← auto redirect to app
+       } else {
+         msg(data.error || 'Login failed.', 'err');
+       }
       } catch (e) { msg('Cannot reach server. Is Flask running? (python app.py)', 'err'); }
 
       btn.disabled = false; btn.textContent = 'Login';
