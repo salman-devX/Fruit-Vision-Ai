@@ -257,10 +257,9 @@ p {
 .hero-bg {
   position: absolute;
   inset: -40px -20px;
-  background: url('./assets/images/hero-fruits-blue.jpg') center right / cover no-repeat;
+  background: url('../images/hero-fruits-blue.jpg') center right / cover no-repeat;
   will-change: transform;
 }
-
 .hero-bg::after {
   content: "";
   position: absolute;
@@ -599,7 +598,7 @@ p {
   position: absolute;
   inset: 0;
   opacity: 0.05;
-  background: url('./assets/images/hero-fruits.jpg') center / cover no-repeat;
+  background: url('../images/hero-fruits.jpg') center / cover no-repeat;
   filter: blur(1px) saturate(1.2);
   pointer-events: none;
 }
@@ -651,11 +650,10 @@ p {
 /* ── UPLOAD (fruit-frame background) ───────── */
 .upload-hero {
   position: relative;
-  background: url('./assets/images/upload-frame-green.jpg') center / cover no-repeat;
+  background: url('../images/upload-frame-green.jpg') center / cover no-repeat;
   color: #fff;
   overflow: hidden;
 }
-
 .upload-hero::before {
   content: "";
   position: absolute;
